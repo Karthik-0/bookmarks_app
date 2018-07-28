@@ -1,0 +1,30 @@
+{% extends 'bookmarks/base.html' %} {% block body %} 
+<h3 class="text-center my-3">
+Edit Bookmark
+</h3>
+<div class="container">
+
+<form action="{% url 'update' pk=fields.id %}" method="post">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Name</label>
+    <input type="text" class="form-control" name="name" value="{{fields.name}}" id="exampleFormControlInput1" placeholder="">
+  </div>
+    <div class="form-group">
+    <label for="exampleFormControlInput1">URL</label>
+    <input type="text" class="form-control" name="url" value="{{fields.url}}" id="exampleFormControlInput1" placeholder="">
+  </div>
+
+    <div class="form-group">
+    <label for="exampleFormControlInput1">Tags</label>
+    <input type="text" class="form-control" name="tags" value="{% for tags in fields.tags.names %}{{tags}}, {% endfor %}" id="exampleFormControlInput1" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="3">{{fields.desc}}
+    </textarea>
+  </div>
+  <button class="btn btn-primary primarybg" type="submit">Submit</button>
+</form>
+</div>
+{% endblock %}

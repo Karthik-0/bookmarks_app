@@ -22,6 +22,6 @@ from . import views
 urlpatterns = [
     path('', views.IndexView.as_view(),name='index'),
     path('add/', views.BookmarkCreate.as_view(), name='create'),
-    path('update/', views.BookmarkUpdate.as_view(), name='update'),
+    path('<int:pk>/update/', views.BookmarkUpdate.as_view(), name='update'),
     path('<int:pk>/delete/', views.BookmarkDelete.as_view(), name='delete')
 ]

@@ -19,6 +19,9 @@ class BookmarkCreate(CreateView):
 class BookmarkUpdate(UpdateView):
     model = Bookmarks
     fields = ['name','url','desc','tags']
+    template_name = 'bookmarks/update.html'
+    context_object_name = 'fields'
+    success_url = reverse_lazy('index')
 
 class BookmarkDelete(DeleteView):
   model = Bookmarks

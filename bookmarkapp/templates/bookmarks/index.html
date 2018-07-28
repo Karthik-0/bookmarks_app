@@ -43,6 +43,7 @@
                                  <form action="{{ bookmark.id }}/delete/" method="post">
                                  {% csrf_token %}
                                     <button class="btn btn-danger" type="submit">Delete</button>
+                                    <a href="{{bookmark.id}}/update/">Edit</a>
                                  </form>
                            
                         </div>
