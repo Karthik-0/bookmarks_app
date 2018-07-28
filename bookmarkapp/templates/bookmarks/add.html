@@ -1,0 +1,28 @@
+{% extends 'bookmarks/base.html' %} {% block body %} 
+<h3 class="text-center my-3">
+Add Bookmark
+</h3>
+<div class="container">
+
+<form action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Name</label>
+    <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="">
+  </div>
+    <div class="form-group">
+    <label for="exampleFormControlInput1">URL</label>
+    <input type="text" class="form-control" name="url" id="exampleFormControlInput1" placeholder="">
+  </div>
+    <div class="form-group">
+    <label for="exampleFormControlInput1">Tags</label>
+    <input type="text" class="form-control" name="tags" id="exampleFormControlInput1" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <button class="btn btn-primary primarybg" type="submit">Submit</button>
+</form>
+</div>
+{% endblock %}

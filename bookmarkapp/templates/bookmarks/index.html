@@ -1,0 +1,59 @@
+{% extends 'bookmarks/base.html' %} {% block body %} {% comment %}
+<ul>
+    {% for bookmark in bookmarks %}
+    <li>{{ bookmark.name }}</li>
+    {% endfor %}
+</ul> {% endcomment %}
+
+<section class="my-3">
+    <div class="container">
+        <div class="box p-4 bg-white shadow">
+            {% if bookmarks is empty %}
+            <div class="text-center">
+                <b>No Bookmarks to Display</b>
+            </div>
+            {% else %} {% for bookmark in bookmarks %}
+            <div class="accordion" id="accord{{ forloop.counter }}">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                    <span>
+                    {% load static %}
+                      <a href="{{ bookmark.url }}" class="hover"><img height="16" width="16" src="{% static 'icon.png' %}" alt=""></a>
+                       
+                        <h5 class="mb-0 inline">
+                            <button class="
+                            btn btn-link text-black" type="button" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapseOne">
+                               {{ bookmark.name }}  
+                            </button>
+                        </h5>
+                    </span>
+                         {% for tags in bookmark.tags.names %}
+                               <span class="badge badge-info">{{tags}}</span>  
+                         {% endfor %}
+                    </div>
+
+                    <div id="collapse{{ forloop.counter }}" class="collapse" aria-labelledby="headingOne" data-parent="#accord{{ forloop.counter }}">
+                        <div class="card-body secondbg">
+                            {{ bookmark.desc }}
+                            <div class="btn-group d-block my-3" role="group" aria-label="Basic example">
+                              
+                               
+                               
+                                 {% comment %} <a href="#" class="btn btn-secondary">Edit</a><i class="fas fa-stroopwafel"></i> {% endcomment %}
+                                 <form action="{{ bookmark.id }}/delete/" method="post">
+                                 {% csrf_token %}
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                 </form>
+                           
+                        </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock body %}
+
