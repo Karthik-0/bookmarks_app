@@ -40,3 +40,12 @@ body{
 .inline{
     display: inline;
 }
+
+form.form{
+    float: right;
+    display: inline;
+}
+.transparent{
+    background: transparent;
+    border: none;
+}

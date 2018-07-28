@@ -30,6 +30,14 @@
                          {% for tags in bookmark.tags.names %}
                                <span class="badge badge-info">{{tags}}</span>  
                          {% endfor %}
+                         <span>
+                            <form action="{{ bookmark.id }}/delete/" class="form" method="post">
+                                {% csrf_token %}
+                                <a href="{{bookmark.id}}/update/"> <img height="16" width="16" src="{% static 'resume.png' %}" alt=""> </a> 
+                                <button class=" transparent" type="submit"><img height="16" width="16" src="{% static 'delete.png' %}" alt=""></button>
+                                 
+                                </form>
+                         </span>
                     </div>
 
                     <div id="collapse{{ forloop.counter }}" class="collapse" aria-labelledby="headingOne" data-parent="#accord{{ forloop.counter }}">
@@ -40,11 +48,7 @@
                                
                                
                                  {% comment %} <a href="#" class="btn btn-secondary">Edit</a><i class="fas fa-stroopwafel"></i> {% endcomment %}
-                                 <form action="{{ bookmark.id }}/delete/" method="post">
-                                 {% csrf_token %}
-                                    <button class="btn btn-danger" type="submit">Delete</button>
-                                    <a href="{{bookmark.id}}/update/">Edit</a>
-                                 </form>
+                             
                            
                         </div>
                             
